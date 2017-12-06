@@ -1,0 +1,95 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue">
+    </script>
+    <head>
+
+    </head>
+    <body>
+
+        <div id="d1">
+            <span v-once>{{ message+1 }}</span><br>
+            <span >{{ message+1 }}</span>
+            <script>
+              var d1 = new Vue({
+                  el: '#d1',
+                  data: {
+                      message: 1
+                  }
+              })
+            </script>      
+        </div>
+
+        <div id="d2">
+            <!--
+                双大括号会将数据解释为普通文本，而非 HTML 代码。为了输出真正的 HTML，
+                你需要使用 v-html 指令：
+                这个 span 的内容将会被替换成为属性值 rawHtml，
+                直接作为 HTML——会忽略解析属性值中的数据绑定。
+                注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。
+                反之，对于用户界面 (UI)，组件更适合作为可重用和可组合的基本单位。
+            -->  
+            <p>Using mustaches:{{ rawHtml }}</p>
+            <p>Using v-html directive:<span v-html="rawHtml"></span></p>
+            <script>
+               // var rawHtml = "<span style='color:read'>This should be red.</span>"
+                var d2 = new Vue({
+                    el: '#d2',
+                    data: {
+                        rawHtml: '<span style="color:red">This should be red.</span>'
+                    }
+                })
+            </script>
+        </div>
+
+        <div v-bind:id="dynamicId">
+            <!-- 
+                Mustache 语法不能作用在 HTML 特性上，遇到这种情况应该使用 v-bind 指令：
+                在布尔特性的情况下，它们的存在即暗示为 true，v-bind 工作起来略有不同，在这个例子中：
+                如果 isButtonDisabled 的值是 null、undefined 或 false，则 disabled 特性
+                甚至不会被包含在渲染出来的 <button> 元素中。
+            -->
+            <button v-bind:disabled="isButtonDisabled">Button</button>
+
+        </div>
+
+        <div id="d3">
+            <!--指令 (Directives) 是带有 v- 前缀的特殊属性。
+                指令属性的值预期是单个 JavaScript 表达式 (v-for 是例外情况，稍后我们再讨论)。
+                指令的职责是，当表达式的值改变时，将其产生的连带影响，
+                响应式地作用于 DOM。回顾我们在介绍中看到的例子：
+            -->
+           <p v-if="seen">now ,you see me</p>
+           <script>
+               var d3 = new Vue({
+                   el: "#d3",
+                   data: {
+                       seen: false
+                   }
+               })
+           </script>
+        </div>
+
+        <div id="d4">
+            <!--
+                在这里 href 是参数，告知 v-bind 指令将该元素的 href 属性与表达式 url 的值绑定。
+            -->
+            <a v-bind:href="url">...</a><br>
+            <!--另一个例子是 v-on 指令，它用于监听 DOM 事件：-->
+            <a v-on:onclick="dosomething">...</a>
+            <button v-on:click="dosomething">...</button>
+            <script>
+                var d4 = new Vue({
+                    el: '#d4',
+                    data: {    },
+                    methods: {
+                        dosomething : function(){
+                            d1.message = 10
+                        }
+                    }                   
+                })
+            </script>
+
+        </div>
+    </body>
+</html>

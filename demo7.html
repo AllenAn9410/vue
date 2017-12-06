@@ -1,0 +1,21 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <head></head>
+    <body>
+        <div class="static" 
+        :class="{ active:isActive, 'text-danger':hasError}">
+            
+    
+        </div>
+        <script>
+            var d1 = new Vue({
+                el: '',
+                data: {
+                    isActive: true,
+                    hasError: false
+                }
+            })
+        </script>
+    </body>
+</html>

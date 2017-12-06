@@ -1,0 +1,58 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <bead></bead>
+    <body>
+        <div id="d1">
+            <button v-on:click="counter += 1">add 1</button>
+            <p>The button above has been clicked {{counter}} times</p>
+            <script>
+                var d1 = new Vue({
+                    el: '#d1',
+                    data:{
+                        counter:0
+                    }
+                })
+            </script>
+        </div>
+
+        <div id="d2">
+            <button v-on:click="greet">greet</button>
+            <script>
+                var d2 = new Vue({
+                    el: '#d2',
+                    data: {
+                        name: 'vue.js'
+                    },
+                    methods:{
+                        greet : function(event) {
+                            alert('hello' + this.name + '!')
+                            if (event) {
+                                alert(event.target.tagName)
+                            }
+                        }
+                       
+                    }
+                })
+            </script>
+        </div>
+
+        <div id="d3">
+            <button v-on:click="say('nonono')">say no</button>
+            <button v-on:click="say('nononononono')">say yes</button>
+            <script>
+                var d3 = new Vue({
+                    el: '#d3',
+                    data:{
+
+                    },
+                    methods:{
+                        say : function (say){
+                            alert(say)
+                        }
+                    }
+                })
+            </script>
+        </div>
+    </body>
+</html>

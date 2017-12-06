@@ -1,0 +1,53 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <head></head>
+    <body>
+        <div id="d1">
+            <!-- 文本-->
+            <input v-model="message" placeholder="edit me">
+            <p>message is : {{ message }}</p>
+        </div>
+        <script>
+            new Vue({
+                el: '#d1',
+                data: {
+                    message: ''
+                  }
+            })
+        </script>
+        <!--多行文本-->
+        <div id="d2">
+            <span>Multiline message is:</span>
+            <p style="white-space: pre-line;">{{ message }}</p>
+            <br>
+            <textarea v-model="message" placeholder="add multiple lines"></textarea>
+        </div>
+        <script>
+                new Vue({
+                    el: '#d2',
+                    data: {
+                        message: ''
+                      }
+                })
+        </script>
+        
+        <div id="d3">
+            <input type="checkbox" id="checkbox" v-model="checked">
+            <label for="checkbox">{{ checked }}</label>
+            <script>
+                new Vue({
+                    el: "#d3",
+                    data: {
+                        checked: false
+                    }
+                })
+            </script>
+        </div>
+
+        <div id="d4">
+            <input type="checkbox" id="jack" value="Jack" v-model="checkedName">
+            <label for="jack">Jack</label>
+        </div>
+    </body>
+</html>

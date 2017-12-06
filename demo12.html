@@ -1,0 +1,56 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <head> 
+    </head>
+    <body>
+        <div id='d1' >
+        <input v-on:keyup.enter.delete="enter" v-model="messages"></input>
+        <div>{{messages}}</div>
+        <script>
+            var d1 = new Vue({
+                el:'#d1',
+                data:{
+                    messages:'hello!'
+                },
+                watch:{
+                    messages:function(){
+                        return this.messages
+                    }
+                },
+                methods:{
+                    enter: function(){
+                        message = d1.messages
+                        alert(message)                       
+                    }
+                }
+            })
+        </script>
+        </div>
+
+        <div id="d2">
+            <input v-on:keyup.alt.67="clear" value="alt+c">
+            <a v-on:click.ctrl="dosomething">dosomething</a>
+            
+            <script>
+                var d2 = new Vue({
+                    el: '#d2',
+                    data:{
+
+                    },
+                    methods:{
+                        clear:function(){
+                            alert('111')
+                        },
+                        dosomething:function(){
+                            alert('2222')
+                        }
+                        
+                    }
+                })
+            </script>
+
+        </div>
+    </body>
+
+</html>

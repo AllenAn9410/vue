@@ -1,0 +1,91 @@
+<!DOCTYPE>
+<html>
+    <head>
+        <script src="https://unpkg.com/vue"></script>
+
+    </head>
+    <body>
+        <div>
+            <ul id="d1">
+               <li v-for="item in items">
+                    {{ item.message }}
+               </li>
+            </ul>
+            <script>
+                var d1 = new Vue({
+                    el: '#d1',
+                    data: {
+                        items: [
+                            { message:'foo'},
+                            { message:'bar' }
+                        ]
+                    }
+                })
+            </script>
+        </div>
+
+        <div id="d2">
+            <ul v-for="(item,index) in items">
+                <li>
+                    {{ parentMessage }} - {{ index }} - {{ item.message }}
+                </li>
+            </ul>
+            <script>
+                var d2 = new Vue({
+                        el: '#d2',
+                        data: {
+                            parentMessage: 'parent',
+                            items: [
+                                { message:'foo'},
+                                { message:'barr'}
+                            ]
+                        }
+                    })
+            </script>
+        </div>
+
+        <div>
+            <ul id="d3" class="demo">
+                <li v-for="(value, key) in object">
+                   {{ key }} - {{ value }}
+                </li>
+            </ul>
+            <script>
+                new Vue({
+                    el:'#d3',
+                    data:{
+                        object:{
+                            fristname:'john',
+                            lastname:'doe',
+                            age:30
+                        }
+                    }
+                })
+            </script>
+        </div>
+
+        <div>
+            <ul id="d4">
+                <li v-for="(value,key,index) in object">
+                   {{ index }} . {{key}} : {{value}}
+                </li>
+                <script>
+                    new Vue({
+                        el:'#d4',
+                        data:{
+                            object:{
+                                firstname: 'john',
+                                lastname: 'deo',
+                                age: 30
+                                }                              
+                        }
+                    })
+                </script>
+            </ul>
+        </div>
+
+        <div>
+            
+        </div>
+    </body>
+</html>

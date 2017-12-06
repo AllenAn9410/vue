@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue">
+    </script>
+    <head></head>
+    <body>
+        <div id="d1">
+            <input
+                v-model="newTodoText"
+                v-on:keyup.enter="addNewTodo"
+                placeholder="Add to do"
+            >
+            <ul>
+                <li
+                    is="todo-item"
+                    v-for="(todo,index) in todos"
+                    v-bind:key="todo.title"
+                    v-on:remove="todos.splice(index,1)"
+                ></li>
+            </ul>
+            <script>
+                Vue.component('todo-item',{
+                    template:  '\
+                         <li>\
+                            {{ title }}\
+                            <button v-on:click="$emit(\'remove\')">X</button>\
+                         </li>\
+                        ',
+                        props:['title']
+                })
+            </script>
+        </div>
+    </body>
+
+</html>

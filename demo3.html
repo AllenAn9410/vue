@@ -1,0 +1,38 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <head>
+
+    </head>
+    <body>
+        <script>
+            //  data: {
+            //     newTodoText: '',
+            //     visitCount: 0 ,
+            //     hideCompletedTodos: false,
+            //     todo: [] ,
+            //     error: null
+            // }
+            var data = {a:1}
+            
+            var vm = new Vue({
+                el: '#example',
+                data: data
+            })
+
+            new Vue({
+                data: {
+                    a:1
+                },
+                created: function(){
+                    console.log('a is '+ this.a)
+                }
+            })
+                
+            
+
+           
+        </script>
+
+    </body>
+</html>
