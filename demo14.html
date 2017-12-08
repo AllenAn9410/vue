@@ -1,0 +1,65 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <head></head>
+    <body>
+        <div id='d1'>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+            <simple-counter></simple-counter>
+        </div>
+        <script>
+            var data = { counter: 0 }
+            Vue.component('simple-counter',{
+                template: '<button v-on:click="counter=(counter+1)%10">{{ counter }}</button>',
+                data: function(){
+                    return {
+                        counter: 0 
+                    }
+                }
+            })
+            new Vue({
+                el:'#d1'
+            })
+        </script>
+
+        <div id='d2'>
+            <child message='allen'></child>
+            <child message='alle'></child>
+            <child ></child>
+            <script>
+                new Vue({
+                    el: '#d2',
+                    components: {
+                    child: {
+                        props: ['message'],
+                        template: '<span>{{ message }}</span>'
+                    }
+                    }
+                })               
+            </script>
+        </div>
+
+        <!--动态prop-->
+        <div id='d3'>
+            <input v-model='parentMsg'>
+            <br>
+            <child v-bind:my-message='parentMsg'></child>
+            <script>
+                new Vue({
+                    el:'#d3',
+                    data: {
+                        parentMsg:'input'
+                    },
+                    components:{
+                        child:{
+                            props: ['myMessage'],
+                            template:'<span>{{ myMessage }}</span>'
+                        }
+                    }
+                })
+            </script>
+        </div>
+    </body>
+</html>
