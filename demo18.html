@@ -1,6 +1,14 @@
 <!DOCTYPE>
 <html>
     <script src="https://unpkg.com/vue"></script>
+    <style>
+            .fade-enter-active, .fade-leave-active{
+                transition: opacity .5s
+            }
+            .fade-enter, .fade-leave-to{
+                opacity: 0
+            }
+        </style>
     <head></head>
     <body>
         <div id="d1">
@@ -18,14 +26,7 @@
                     }
                 })
             </script>
-            <style>
-                .fade-enter-active, .fade-leave-active{
-                    transition: opacity .10s
-                }
-                .fade-enter, .fade-leave-to{
-                    opacity: 0
-                }
-            </style>
+           
         </div>
     </body>
 </html>

@@ -1,0 +1,144 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+            .slide-fade-enter-active{
+                transition : all .3s ease;
+            }
+            .slide-fade-leave-active{
+                transition : all .8s cubic-bezier(1.0,0.5,0.8,1.0)
+            }
+            .slide-fade-enter, .slide-fade-leave-to
+            /* .slide-fade-leave-active for below version 2.1.8 */ {
+                transform: translateX(10px);
+                opacity: 0;
+            }
+    </style>
+    <head></head>
+    <body>
+        <div id="d1">
+            <button @click="show = !show">
+                Toggle reader
+            </button>
+            <transition name="slide-fade">
+                <p v-if="show">hello</p>
+            </transition>
+            <script>
+                new Vue({
+                    el:'#d1',
+                    data:{
+                        show:true
+                    }
+                })
+            </script>
+        </div>
+        <br><br><br>
+        <div id="d2">
+            <button @click="show = !show">
+                Toggle show
+            </button>
+            <transition name="bounce">
+                <p v-if="show">
+                    Lorem ipsum dolor sit amet,consectur adipiscing elit.Mauris facilisis enim libero,at lacina diam fermentum id . Pellentesque habitant morbi tristique et netus.
+                </p>
+            </transition>
+            <script>
+                new Vue({
+                    el:'#d2',
+                    data:{
+                        show: false
+                    }
+                })
+            </script>
+        </div>
+        <style>
+            .bounce-enter-active{
+                animation: bounce-in .5s;
+            }
+            .bounce-leave-actice{
+                animation: bounce-in .5s reverse;
+            }
+            @keyframes bounce-in{
+                0%{
+                    transform: scale(0);
+                }
+                50%{
+                    transform:scale(1.5);
+                }
+                100%{
+                    transform:scale(1);
+                }
+            }
+        </style>
+        <br><br><br>
+        <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+        <div id="d3">
+            <button @click="show = !show">
+                Toggle render
+            </button>
+            <transition
+            name="custom-classes-transition"
+            enter-active-class="animated tada"
+            leave-active-class="animated bounceOutRight"
+            >
+                <p v-if="show">
+                    hello
+                </p>
+            </transition>
+            <script>
+                new Vue({
+                    el:'#d3',
+                    data:{
+                        show:true
+                    }
+                })
+            </script>
+        </div><br><br><br>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+        <div id="d4">
+            <button @click="show = !show">
+                Toggle
+            </button>
+            <transition
+            v-on:before-enter="beforeEnter"
+            v-on:enter="enter"
+            v-on:leave="leave"
+            v-bind:css="false"
+            >
+                <p v-if="show">
+                    Demo
+                </p>
+            </transition>
+            <script>
+                new Vue({
+                    el:'#d4',
+                    data:{
+                        show:false
+                    },
+                    methods:{
+                        beforeEnter: function(el) {
+                            el.style.opacity = 0
+                            el.style.transformOrgin = 'left'
+                        },
+                        enter: function(el,done){
+                            Velocity(el,{opacity:1,fontSize:'1.4em'},{duration:300})
+                            Velocity(el,{fontSize:'1em'},{complete:done})
+
+                        },
+                        leave:function(el,done){
+                            Velocity(el,{translateX:'15px',rotateZ:'50deg'},{duration:600})
+                            Velocity(el,{rotateZ:'100deg'},{loop:2})
+                            Velocity(el,{
+                                rotateZ: '45deg',
+                                translateY : '30px',
+                                translateX : '30px',
+                                opacity: 0
+                            },{complete:done})
+                        }
+                    }
+                })
+            </script>
+        </div>
+    </body>
+</html>
