@@ -1,0 +1,34 @@
+<!DOCTYPE>
+<html>
+    <script src="https://unpkg.com/vue"></script>
+    <head></head>
+    <body>
+        <div id="user">
+            <template>
+                <input v-model="user" placeholder="user" style="width:300px">
+            </template>
+            <script>
+                var user = new Vue({
+                    el:'#user',
+                    data:{
+                        user: ''
+                    }
+                })
+            </script>
+        </div><br>
+        <div id="password">
+            <template>
+                <input v-model="password" placeholder="password" style="width:300px">
+            </template>
+            <script>
+                var password = new Vue({
+                    el:'#password',
+                    data:{
+                        password:''
+                    }
+                })
+            </script>
+        </div>    
+    </body>
+    
+</html>
